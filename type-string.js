@@ -46,3 +46,23 @@ const mensagem = `Esta é
 uma mensagem em
 várias linhas`;
 console.log(mensagem);
+
+
+// comparando strings
+const cidade1 = "belo horizonte";
+const input1 = "Belo Horizonte";
+
+console.log(cidade1 === input1); // false
+
+
+const cidade2 = "rio de janeiro";
+const input2 = "Rio De Janeiro";
+
+const inputMinusculo = input2.toLowerCase(); // torna a string em tudo minusculo
+
+console.log(cidade2 === inputMinusculo); // true
+
+
+// contando caracteres numa string
+const senha2 = "minhasenha123"
+console.log(senha.length) 

@@ -27,7 +27,7 @@ console.log(citacao2);
 const concatenacao1 = "Meu nome é: ";
 const meuNome = "Leonardo";
 
-console.log(concatencao1 + meuNome);
+console.log(concatenacao1 + meuNome);
 
 const frase1 = "Eu tenho ";
 const quantidade = 4;

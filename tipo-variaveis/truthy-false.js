@@ -39,8 +39,3 @@ console.log("A variavel varNull é do tipo: " + typeof varNull + "\n");
 
 let minhaVar; // variável UNDEFINED
 console.log("A variavel minhaVar é tipo: " + typeof minhaVar);
-
-
-
-
-

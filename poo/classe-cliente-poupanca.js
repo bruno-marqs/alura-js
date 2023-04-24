@@ -13,15 +13,15 @@ export default class ClientePoupanca extends Cliente {
     }
 }
 
-// instanciando objeto de classe ClientePoupanca
-const cl2 = new ClientePoupanca("Maria", "maria@email.com", "78945612355", 100, 200);
+// // instanciando objeto de classe ClientePoupanca
+// const cl2 = new ClientePoupanca("Maria", "maria@email.com", "78945612355", 100, 200);
 
-// imprimindo objeto criado
-console.log(cl2);
+// // imprimindo objeto criado
+// console.log(cl2);
 
-// executando método de depositarPoupança
-cl2.depositarPoupanca(45);
+// // executando método de depositarPoupança
+// cl2.depositarPoupanca(45);
 
-// imprimindo novo saldoPoupança
-console.log(cl2.saldoPoupanca);
+// // imprimindo novo saldoPoupança
+// console.log(cl2.saldoPoupanca);
 

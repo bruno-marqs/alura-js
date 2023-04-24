@@ -16,14 +16,14 @@ export default class Cliente {
     }
 }
 
-// instanciando novo objeto de Classe Cliente
-const cl1 = new Cliente("Gilson", "gilson@email.com", "45688532415", 100);
+// // instanciando novo objeto de Classe Cliente
+// const cl1 = new Cliente("Gilson", "gilson@email.com", "45688532415", 100);
 
-// imprimindo objeto
-console.log(cl1)
+// // imprimindo objeto
+// console.log(cl1)
 
-// executando função depositar
-cl1.depositar(134);
+// // executando função depositar
+// cl1.depositar(134);
 
-// imprimindo novo saldo
-cl1.exibirSaldo();
+// // imprimindo novo saldo
+// cl1.exibirSaldo();

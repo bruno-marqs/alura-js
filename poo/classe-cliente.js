@@ -1,5 +1,5 @@
 // criando classe Cliente
-class Cliente {
+export default class Cliente {
     constructor(nome, email, cpf, saldo){
         this.nome = nome;
         this.email = email;

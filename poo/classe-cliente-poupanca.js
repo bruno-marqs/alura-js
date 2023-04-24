@@ -2,7 +2,7 @@
 import Cliente from "./classe-cliente.js"
 
 // criando classe-filha por Herança
-class ClientePoupanca extends Cliente {
+export default class ClientePoupanca extends Cliente {
     constructor(nome, email, cpf, saldo, saldoPoupanca){
         super(nome, email, cpf, saldo);
         this.saldoPoupanca = saldoPoupanca

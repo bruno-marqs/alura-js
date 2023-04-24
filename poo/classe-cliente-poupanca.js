@@ -3,9 +3,10 @@ import Cliente from "./classe-cliente.js"
 
 // criando classe-filha por Herança
 export default class ClientePoupanca extends Cliente {
+    #saldoPoupanca                                               // tornando atributo privado
     constructor(nome, email, cpf, saldo, saldoPoupanca){
         super(nome, email, cpf, saldo);
-        this.saldoPoupanca = saldoPoupanca
+        this.#saldoPoupanca = saldoPoupanca
     }
     // criando método exclusivo de Poupança
     depositarPoupanca(valor){

@@ -15,7 +15,12 @@ export default class Cliente {
 
     // criando setters
     set setNome(novoNome){
-        this.#nome = novoNome;
+        // fazendo tratamento de erro
+        if (novoNome === ''){
+            throw new Error ('Formato não válido')
+        } else {
+            this.#nome = novoNome;
+        };
     }
 
     // métodos de classe

@@ -8,11 +8,17 @@ export default class Cliente {
         this.saldo = saldo;
     }
 
-    // criando getters e setters
+    // criando getters
     get getNome(){
         return this.#nome;
     }
 
+    // criando setters
+    set setNome(novoNome){
+        this.#nome = novoNome;
+    }
+
+    // métodos de classe
     depositar(valor){
         this.saldo += valor;
     }

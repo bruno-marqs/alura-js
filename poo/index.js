@@ -14,7 +14,9 @@ console.log(novoCliente.nome);
 const novoClientePoupanca = new ClientePoupanca('Julia', 'julia@email.com', '85462533388', 100, 300);
 console.log(novoClientePoupanca);
 
-novoClientePoupanca.#nome = 'Maria'; // error: tentando alterar o valor de um atributo privado da Classe ClientePoupança
+// novoClientePoupanca.#nome = 'Maria'; // error: tentando alterar o valor de um atributo privado da Classe Cliente
+novoClientePoupanca.getNome = 'Maria'; // alterando atributo privado utilizando getter
+console.log(novoClientePoupanca.nome);
 
 
 // instanciando objeto ClienteInvest

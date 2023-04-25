@@ -1,10 +1,16 @@
 // criando classe Cliente
 export default class Cliente {
+    #nome
     constructor(nome, email, cpf, saldo){
-        this.nome = nome;
+        this.#nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.saldo = saldo;
+    }
+
+    // criando getters e setters
+    get getNome(){
+        return this.#nome;
     }
 
     depositar(valor){
@@ -16,14 +22,3 @@ export default class Cliente {
     }
 }
 
-// // instanciando novo objeto de Classe Cliente
-// const cl1 = new Cliente("Gilson", "gilson@email.com", "45688532415", 100);
-
-// // imprimindo objeto
-// console.log(cl1)
-
-// // executando função depositar
-// cl1.depositar(134);
-
-// // imprimindo novo saldo
-// cl1.exibirSaldo();

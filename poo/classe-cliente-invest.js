@@ -8,7 +8,13 @@ export default class ClienteInvest extends Cliente {
         this.valorInvest = valorInvest
     }
 
-    investir(valor){
+    // criando método privado
+    #investir(valor){
         this.valorInvest = valor * 0.015
+    }
+
+    // criando método público para ser executado fora da Classe
+    aplicarInvest(invest){
+        return this.#investir(invest);
     }
 }

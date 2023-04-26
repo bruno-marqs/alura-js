@@ -12,9 +12,10 @@ for (let i = 0; i < listaTeclas.length; i++) {
     // iniciando variaveis
     const tecla = listaTeclas[contador];
     const som = tecla.classList[1];
+    const idAudio = `#som_${som}`; 
 
     tecla.onclick = function() {
-        tocaSom(`#som_${som}`);
+        tocaSom(idAudio);
     };
     
 }

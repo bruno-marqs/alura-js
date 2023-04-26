@@ -1,4 +1,4 @@
-// criando função
+// criando função para tocar som
 function tocaSom(idElementAudio) {
     document.querySelector(idElementAudio).play();
 }
@@ -20,8 +20,11 @@ for (let i = 0; i < listaTeclas.length; i++) {
     };
 
     // criando funções anônimas para add / remover classe
-    tecla.onkeydown = function (){
-        tecla.classList.add('ativa');
+    tecla.onkeydown = function (evento){
+        // condicional para limitar teclas de ação
+        if(evento.code === "Enter" || evento.code === "Space"){
+            tecla.classList.add('ativa');
+        }
     }
     tecla.onkeyup = function () {
         tecla.classList.remove('ativa');

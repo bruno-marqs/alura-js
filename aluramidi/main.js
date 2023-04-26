@@ -1,6 +1,9 @@
 // criando função para tocar som
-function tocaSom(idElementAudio) {
-    document.querySelector(idElementAudio).play();
+function tocaSom(seletorAudio) {
+    // criando variavel
+    const elemento = document.querySelector(seletorAudio);
+    // condicional ternário
+    elemento === null ? console.log('Elemento não encontrado') : elemento.play();
 }
 
 // criando lista das teclas

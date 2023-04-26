@@ -7,8 +7,7 @@ function tocaSom(idElementAudio) {
 const listaTeclas = document.querySelectorAll('.tecla');
 
 // criando laço de repetição
-let contador = 0;
-while(contador < listaTeclas.length){
+for (let i = 0; i < listaTeclas.length; i++) {
 
     // iniciando variaveis
     const tecla = listaTeclas[contador];
@@ -17,5 +16,5 @@ while(contador < listaTeclas.length){
     tecla.onclick = function() {
         tocaSom(`#som_${som}`);
     };
-    contador ++;
+    
 }

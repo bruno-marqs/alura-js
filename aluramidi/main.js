@@ -14,8 +14,17 @@ for (let i = 0; i < listaTeclas.length; i++) {
     const som = tecla.classList[1];
     const idAudio = `#som_${som}`; 
 
+    // criando função anônima para tocar som
     tecla.onclick = function() {
         tocaSom(idAudio);
     };
+
+    // criando funções anônimas para add / remover classe
+    tecla.onkeydown = function (){
+        tecla.classList.add('ativa');
+    }
+    tecla.onkeyup = function () {
+        tecla.classList.remove('ativa');
+    }
     
 }

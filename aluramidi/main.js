@@ -9,8 +9,13 @@ const listaTeclas = document.querySelectorAll('.tecla');
 // criando laço de repetição
 let contador = 0;
 while(contador < listaTeclas.length){
-    listaTeclas[contador].onclick = function() {
-        tocaSom('#som_tecla_pom');
+
+    // iniciando variaveis
+    const tecla = listaTeclas[contador];
+    const som = tecla.classList[1];
+
+    tecla.onclick = function() {
+        tocaSom(`#som_${som}`);
     };
     contador ++;
 }

@@ -1,3 +1,10 @@
-document.querySelector('.tecla_pom');
+// criando função
+function tocaSomPom(){
+    document.querySelector('#som_tecla_pom').play();
+}
 
-document.querySelector('#som_tecla_pom').play();
+function tocaSomClap(){
+    document.querySelector('#som_tecla_clap').play();
+}
+
+document.querySelector('.tecla_pom');

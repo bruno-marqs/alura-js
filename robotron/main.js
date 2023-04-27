@@ -3,15 +3,19 @@ const subtrair = document.querySelector("#subtrair");
 const somar = document.querySelector("#somar");
 const braco = document.querySelector("#braco");
 
-// criando arrow function somar
-somar.addEventListener("click", () => {manipulaDados("somar")})
+const controle = document.querySelectorAll(".controle-ajuste");
 
-// criando arrow function subtrair
-somar.addEventListener("click", (evento) => {manipulaDados("subtrair")})
+// percorrendo array controle-ajuste
+controle.forEach( (elemento) => {
+    // 
+    elemento.addEventListener("click", (evento) => {
+        manipulaDados(evento.target.textContent)
+    })
+})
 
 // criando função manipular dados
 function manipulaDados(operacao) {
-    if (operacao === "subtrair"){
+    if (operacao === "-"){
         braco.value = parseInt(braco.value) - 1
     } else {
         braco.value = parseInt(braco.value) + 1

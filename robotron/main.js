@@ -1,6 +1,6 @@
 // iniciando variável
 const controle = document.querySelectorAll("[data-controle]"); //data attribute
-const stats = document.querySelectorAll("[data-stats]"); //data attribute
+const stats = document.querySelectorAll("[data-stat]"); //data attribute
 
 // inicializando objetos peças com as estatisticas
 const pecas = {
@@ -60,6 +60,6 @@ function manipulaDados(operacao, controle) {
 // criando função para atualizar as estatisticas
 function atualizaStats(peca){
     stats.forEach( (elemento) => {
-        elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.stats]
+        elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.stat]
     })
 }

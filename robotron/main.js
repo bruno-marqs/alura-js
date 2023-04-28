@@ -1,27 +1,8 @@
 // iniciando variável
 const controle = document.querySelectorAll("[data-controle]"); //data attribute
+const stats = document.querySelectorAll("[data-stats]"); //data attribute
 
-// percorrendo array controle-ajuste
-controle.forEach( (elemento) => {
-    // 
-    elemento.addEventListener("click", (evento) => {
-        manipulaDados(evento.target.dataset.controle, evento.target.parentNode);
-    })
-});
-
-// criando função manipular dados
-function manipulaDados(operacao, controle) {
-    const peca = controle.querySelector("[data-contador]");
-
-    if (operacao === "-"){
-        peca.value = parseInt(peca.value) - 1
-    } else {
-        peca.value = parseInt(peca.value) + 1
-    };
-};
-
-
-// inserindo estatística de cada peça do robô
+// inicializando objetos peças com as estatisticas
 const pecas = {
     "bracos": {
         "forca": 29,
@@ -54,4 +35,29 @@ const pecas = {
         "energia": 0,
         "velocidade": -2
     }
+}
+
+// percorrendo array controle-ajuste
+controle.forEach( (elemento) => {
+    // 
+    elemento.addEventListener("click", (evento) => {
+        manipulaDados(evento.target.dataset.controle, evento.target.parentNode);
+        atualizaStats(evento.target.dataset.peca);
+    })
+});
+
+// criando função manipular dados
+function manipulaDados(operacao, controle) {
+    const peca = controle.querySelector("[data-contador]");
+
+    if (operacao === "-"){
+        peca.value = parseInt(peca.value) - 1
+    } else {
+        peca.value = parseInt(peca.value) + 1
+    };
+};
+
+// criando função para atualizar as estatisticas
+function atualizaStats(peca){
+
 }

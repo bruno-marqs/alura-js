@@ -1,9 +1,16 @@
-// criando o evento no input para executar a função
-const dataNascimento = document.querySelector('#nascimento')
+// craindo função genérica para reter o input
+function valida(input) {
+    const tipoDeInput = input.dataset.tipo
 
-dataNascimento.addEventListener('blur', (evento => {
-    validaDataNascimento(evento.target)
-}))
+    if(validadores[tipoDeInput]) {
+        validadores[tipoDeInput](input)
+    }
+}
+
+// criando objeto
+const validadores =  {
+    dataNascimento:input => validaDataNascimento(input)
+}
 
 // criando função para validar idade mínima
 function validaDataNascimento(input) {

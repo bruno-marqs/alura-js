@@ -94,7 +94,8 @@ function validaCPF(input) {
     const cpfFormatado = input.value.replace(/\D/g, '');
     let mensagem = '';
 
-    if(!verificaCPFRepetido(cpfFormatado)) {
+    // há uma ! para ajustar o retorno booleano (FALSE) da função
+    if(!verificaCPFRepetido(cpfFormatado) || !checaEstruturaCPF(cpfFormatado)) {
         mensagem = 'O CPF não é válido'
     }
 
@@ -102,6 +103,7 @@ function validaCPF(input) {
 }
 
 function verificaCPFRepetido(cpf) {
+    // vetor de valores inválidos
     const valoresRepetidos = [
         '00000000000',
         '11111111111',
@@ -114,8 +116,10 @@ function verificaCPFRepetido(cpf) {
         '88888888888',
         '99999999999',
     ]
+    // inicializa variável como TRUE
     let cpfValido = true;
 
+    // laço para verificar se cpf inserido é um valor inválido
     valoresRepetidos.forEach (valor => {
         if(valor == cpf){
             cpfValido = false
@@ -123,4 +127,42 @@ function verificaCPFRepetido(cpf) {
     });
 
     return cpfValido
+}
+
+function checaEstruturaCPF(cpf) {
+    const multiplicador = 10;
+
+    return checaDigitoVerificador(cpf, multiplicador)
+}
+
+function checaDigitoVerificador(cpf, multiplicador) {
+    // condicional verifica se os dois dígitosVerificadores já foram confirmados
+    if(multiplicador >= 12) {
+        return true
+    }
+
+    // atribui a variável o valor do multiplicador para não atrapalhar o laço
+    let multiplicadorInicial = multiplicador;
+    let soma = 0
+    // atribui a variável a string CPF como vetor de char
+    const cpfSemDigitos = cpf.substr(0, multiplicador - 1).split('');
+    // posiciona o valor do digitoVerificador ao index indicado
+    const digitoVerificador = cpf.charAt(multiplicador - 1);
+
+    // loop para fazer o cálculo de validação do CPF
+    for(let contador = 0; multiplicadorInicial > 1; multiplicadorInicial--){
+        soma = soma + cpfSemDigitos[contador] * multiplicadorInicial;
+        contador++;
+    }
+
+    // condição que verifica o 1º digitoVerificador, recursividade para o 2º dígito
+    if(digitoVerificador == confirmaDigito(soma)) {
+        return checaDigitoVerificador(cpf, multiplicador + 1)
+    }
+    return false
+}
+
+// função para confirmar o dígito verificador do CPF
+function confirmaDigito(soma){
+    return 11 - (soma % 11)
 }

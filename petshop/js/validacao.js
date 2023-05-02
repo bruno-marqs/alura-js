@@ -1,3 +1,8 @@
+// criando objeto
+const validadores =  {
+    dataNascimento:input => validaDataNascimento(input)
+}
+
 // craindo função genérica para reter o input
 export function valida(input) {
     const tipoDeInput = input.dataset.tipo
@@ -8,13 +13,27 @@ export function valida(input) {
     
     // estilizando tratamento de erro
     if(input.validity.valid) {
-        input.parentElement.classList.remove('input-container--invalido')
+        // alterando a classe css
+        input.parentElement.classList.remove('input-container--invalido');
+        // selecionando e inserindo mensagem de erro
+        input.parentElement.querySelector('.input-mensagem-erro').innerHTML = '';
     } else {
+        // alterando a classe css
         input.parentElement.classList.add('input-container--invalido')
+        // selecionando e inserindo mensagem de erro
+        input.parentElement.querySelector('.input-mensagem-erro').innerHTML = mostraMensagemDeErro(tipoDeInput, input);
     }
 }
 
-// criando objetos
+// criando vetor de string dos tipos de erro
+const tiposDeErro = [
+    'valueMissing',
+    'typeMismatch',
+    'patternMismatc',
+    'customError'
+]
+
+// criando objeto de erro
 const mensagensDeErro = {
     nome: {
         valueMissing: 'O campo nome não pode estar vazio.'
@@ -33,8 +52,13 @@ const mensagensDeErro = {
     }
 }
 
-const validadores =  {
-    dataNascimento:input => validaDataNascimento(input)
+function mostraMensagemDeErro (tipoDeInput, input) {
+    let mensagem = ''
+    tiposDeErro.forEach(erro => {
+        if(input.validity[erro]) {
+            mensagem = mensagensDeErro[tipoDeInput][erro]
+        }
+    })
 }
 
 // criando função para validar idade mínima

@@ -1,5 +1,5 @@
 // craindo função genérica para reter o input
-function valida(input) {
+export function valida(input) {
     const tipoDeInput = input.dataset.tipo
 
     if(validadores[tipoDeInput]) {

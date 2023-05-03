@@ -34,6 +34,16 @@ async function buscaEndereco(cep) {
         if(requisiçãoFormatado.erro) {
             throw Error('Esse CEP não é válido')
         }
+        // inicializando variável pelo id
+        const cidade = document.getElementById('cidade');
+        const logradouro = document.getElementById('endereco');
+        const estado = document.getElementById('estado');
+
+        // atribuindo valor da requisição à variável
+        cidade.value = requisiçãoFormatado.localidade;
+        logradouro.value = requisiçãoFormatado.logradouro;
+        estado.value = requisiçãoFormatado.uf;
+
 
         // imprimindo resultado da requisição
         console.log(requisiçãoFormatado)

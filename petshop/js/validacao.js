@@ -4,7 +4,7 @@ const validadores =  {
     cpf:input => validaCPF(input)
 }
 
-// craindo função genérica para reter o input
+// criando função genérica para reter o input
 export function valida(input) {
     const tipoDeInput = input.dataset.tipo
 
@@ -30,7 +30,7 @@ export function valida(input) {
 const tiposDeErro = [
     'valueMissing',
     'typeMismatch',
-    'patternMismatc',
+    'patternMismatch',
     'customError'
 ]
 
@@ -58,6 +58,15 @@ const mensagensDeErro = {
     cep: {
         valueMissing: 'O campo CEP não pode estar vazio.',
         patternMismatch: 'O CEP não é válido'
+    },
+    logradouro: {
+        valueMissing: 'O campo logradouro não pode estar vazio.',
+    },
+    cidade: {
+        valueMissing: 'O campo cidade não pode estar vazio.',
+    },
+    estado: {
+        valueMissing: 'O campo estado não pode estar vazio.',
     }
 }
 

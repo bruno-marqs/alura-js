@@ -209,6 +209,8 @@ function recuperarCEP(input) {
                     return
                 }
                 input.setCustomValidity('')
+                preencheCamposComCEP(data)
+                return
             }
         )
     }

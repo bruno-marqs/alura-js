@@ -19,19 +19,20 @@ console.log(consultaCEP)
 // ------------------------------------------------------------------
 
 // criando função assincrona
-async function buscaEndereco() {
+async function buscaEndereco(cep) {
     try {
         // atribuindo a variável API viaCEP
-        const requisição = await fetch('https://viacep.com.br/ws/01001000/json/')
+        const requisição = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
         const requisiçãoFormatado = await requisição.json();
 
         // condicional para tratar erro
         if(requisiçãoFormatado.erro) {
             throw Error('Esse CEP não é válido')
         }
-        
+
         // imprimindo resultado da requisição
         console.log(requisiçãoFormatado)
+        return requisiçãoFormatado
     } catch (erro) {
         console.log(erro)
     }

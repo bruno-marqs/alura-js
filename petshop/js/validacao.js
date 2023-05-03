@@ -213,3 +213,16 @@ function recuperarCEP(input) {
         )
     }
 }
+
+// criando função para preencher os dados requisitados do CEP
+function preencheCamposComCEP(data) {
+    // inicializando variável pelo data-attribute
+    const logradouro = document.querySelector('[data-tipo="logradouro"]')
+    const cidade = document.querySelector('[data-tipo="cidade"]')
+    const estado = document.querySelector('[data-tipo="estado"]')
+
+    // atribuindo valor requisitado à variavel
+    logradouro.value = data.logradouro
+    cidade.value = data.localidade
+    estado.value = data.uf
+}

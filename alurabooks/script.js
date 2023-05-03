@@ -15,3 +15,18 @@ const consultaCEP = fetch('https://viacep.com.br/ws/01001000/json/')
 
 // imprimindo resultado da requisição
 console.log(consultaCEP)
+
+// ------------------------------------------------------------------
+
+// criando função assincrona
+async function buscaEndereco() {
+    // atribuindo a variável API viaCEP
+    const requisição = await fetch('https://viacep.com.br/ws/01001000/json/')
+    const requisiçãoFormatado = await requisição.json();
+    
+    // imprimindo resultado da requisição
+    console.log(requisiçãoFormatado)
+}
+
+//executando função
+buscaEndereco();

@@ -1,7 +1,8 @@
 // criando objeto
 const validadores =  {
     dataNascimento:input => validaDataNascimento(input),
-    cpf:input => validaCPF(input)
+    cpf:input => validaCPF(input),
+    cep:input => recuperarCEP(input)
 }
 
 // criando função genérica para reter o input
@@ -57,7 +58,8 @@ const mensagensDeErro = {
     },
     cep: {
         valueMissing: 'O campo CEP não pode estar vazio.',
-        patternMismatch: 'O CEP não é válido'
+        patternMismatch: 'O CEP não é válido',
+        customError: 'Não foi possível buscar o CEP.'
     },
     logradouro: {
         valueMissing: 'O campo logradouro não pode estar vazio.',
@@ -77,6 +79,7 @@ function mostraMensagemDeErro (tipoDeInput, input) {
             mensagem = mensagensDeErro[tipoDeInput][erro]
         }
     })
+    return mensagem
 }
 
 // criando função para validar idade mínima
@@ -178,4 +181,35 @@ function checaDigitoVerificador(cpf, multiplicador) {
 // função para confirmar o dígito verificador do CPF
 function confirmaDigito(soma){
     return 11 - (soma % 11)
+}
+
+// criando função para requistar endereço por CEP
+function recuperarCEP(input) {
+                                 // regex que substitui o que não é digito por vazio
+    const cep = input.value.replace(/\D/g, '');
+    // variável atribuída com url API
+    const url = `http://viacep.com.br/ws/${cep}/json/`;
+    // objeto da requisição
+    const options = {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'content-type': 'applications/json;charset=utf-8'
+        }
+    }
+
+    // condicional de validação dos valores inseridos
+    if(!input.validity.patternMismatch && !input.validity.valueMissing) {
+        fetch(url, options).then(
+            response => response.json()
+        ).then(
+            data => {
+                if(data.erro) {
+                    input.setCustomValidity('Não foi possível buscar o CEP.')
+                    return
+                }
+                input.setCustomValidity('')
+            }
+        )
+    }
 }

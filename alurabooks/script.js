@@ -18,6 +18,11 @@ console.log(consultaCEP)
 
 // ------------------------------------------------------------------
 
+// selecionando elemento por id
+const cep = document.getElementById('cep');
+// criando event no input para alimentar parametro da função
+cep.addEventListener("focusout", () => buscaEndereco(cep.value));
+
 // criando função assincrona
 async function buscaEndereco(cep) {
     try {

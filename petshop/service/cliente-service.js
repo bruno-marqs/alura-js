@@ -25,22 +25,35 @@ const tabela = document.querySelector('[data-tabela]')
 
 // ------------------------------------------------
 
-//criando objeto de conexão
-const http = new XMLHttpRequest()
 
-// abrindo a conexão (verbo http, destinatário conexão)
-http.open('GET', 'http://localhost:3000/profile')
+// função de promessa para criar array de clientes
+const listaClientes = () => {
+    // criando objeto promessa
+    const promessa = new Promise((resolve, reject) => {
+        //criando objeto de conexão
+        const http = new XMLHttpRequest()
+        // abrindo a conexão (verbo http, destinatário conexão)
+        http.open('GET', 'http://localhost:3000/profile')
+        
+        http.onload = () => {
+            // condicional para carregar os dados
+            if(http.status >= 400) {
+                reject(JSON.parse(http.response))
+            } else {
+                resolve(JSON.parse(http.response))
+            }
+        }
+        // enviando dados 
+        http.send()
+    })
+    return promessa
+}
 
-// enviando dados 
-http.send()
-
-http.onload = () => {
-    // variavel com valores formatados em json
-    const data = JSON.parse(http.response)
-    console.log(data)
+// executando função e manipulando dados
+listaClientes().then( data => {
     // percorrendo vetor data
     data.forEach(elemento => {
         // anexando elemento-filho (child) no elemento-pai (parent)
         tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))
     })
-}
+})

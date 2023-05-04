@@ -1,5 +1,7 @@
 // criando função com template para cada linha de cliente
 const criaNovaLinha = (nome, email) => {
+    // criando linha para cada cliente
+    const linhaNovaCliente = document.createElement('tr')
     // atribuindo à variável o template string
     const conteudo = `
         <td class="td" data-td>${nome}</td>
@@ -10,6 +12,10 @@ const criaNovaLinha = (nome, email) => {
                 <li><button class="botao-simples botao-simples--excluir" type="button">Excluir</button></li>
             </ul>
         </td>`
+    // atribuindo ao elemento html o template
+    linhaNovaCliente.innerHTML = conteudo
+    
+    return linhaNovaCliente
 }
 
 // ------------------------------------------------

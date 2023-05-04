@@ -25,28 +25,15 @@ const tabela = document.querySelector('[data-tabela]')
 
 // ------------------------------------------------
 
-
 // função de promessa para criar array de clientes
 const listaClientes = () => {
-    // criando objeto promessa
-    const promessa = new Promise((resolve, reject) => {
-        //criando objeto de conexão
-        const http = new XMLHttpRequest()
-        // abrindo a conexão (verbo http, destinatário conexão)
-        http.open('GET', 'http://localhost:3000/profile')
-        
-        http.onload = () => {
-            // condicional para carregar os dados
-            if(http.status >= 400) {
-                reject(JSON.parse(http.response))
-            } else {
-                resolve(JSON.parse(http.response))
-            }
+    // executando fetch
+    return fetch(`http://localhost:3000/profile`).then(
+        resposta => {
+            // retornando dados formatados em json
+            return resposta.json()
         }
-        // enviando dados 
-        http.send()
-    })
-    return promessa
+    )
 }
 
 // executando função e manipulando dados

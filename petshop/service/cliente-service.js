@@ -20,12 +20,12 @@ const criaNovaLinha = (nome, email) => {
 
 // ------------------------------------------------
 
-// selecionando elemento por data-attribute
+// percorrendo árvore do DOM e selecionando elemento por data-attribute
 const tabela = document.querySelector('[data-tabela]')
 
 // ------------------------------------------------
 
-// função de promessa para criar array de clientes
+// função fazendo conexão com API e requisitando dados 
 const listaClientes = () => {
     // executando fetch
     return fetch(`http://localhost:3000/profile`).then(

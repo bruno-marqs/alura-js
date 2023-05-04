@@ -1,4 +1,4 @@
-import { listaClientes } from "../service/cliente-service"
+import { clienteService } from "../service/cliente-service.js"
 
 // criando função com template para cada linha de cliente
 const criaNovaLinha = (nome, email) => {
@@ -28,7 +28,7 @@ const tabela = document.querySelector('[data-tabela]')
 // ------------------------------------------------
 
 // executando função e manipulando dados
-listaClientes().then( data => {
+clienteService.listaClientes().then( data => {
     // percorrendo vetor data
     data.forEach(elemento => {
         // anexando elemento-filho (child) no elemento-pai (parent)

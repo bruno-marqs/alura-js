@@ -1,6 +1,6 @@
 
 // função fazendo conexão com API e requisitando dados 
-export const listaClientes = () => {
+const listaClientes = () => {
     // executando fetch
     return fetch(`http://localhost:3000/profile`).then(
         resposta => {
@@ -10,3 +10,7 @@ export const listaClientes = () => {
     )
 }
 
+// criando objeto para notação
+export const clienteService = {
+    listaClientes
+}

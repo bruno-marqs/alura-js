@@ -36,5 +36,9 @@ http.send()
 
 http.onload = () => {
     const data = http.response
-    
+    // percorrendo vetor data
+    data.forEach(elemento => {
+        // anexando elemento-filho (child) no elemento-pai (parent)
+        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))
+    })
 }

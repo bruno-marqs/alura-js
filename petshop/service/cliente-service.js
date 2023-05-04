@@ -20,6 +20,11 @@ const criaNovaLinha = (nome, email) => {
 
 // ------------------------------------------------
 
+// selecionando elemento por data-attribute
+const tabela = document.querySelector('[data-tabela]')
+
+// ------------------------------------------------
+
 //criando objeto de conexão
 const http = new XMLHttpRequest()
 
@@ -31,5 +36,5 @@ http.send()
 
 http.onload = () => {
     const data = http.response
-    console.log(data)
+    
 }

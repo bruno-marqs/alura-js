@@ -31,11 +31,13 @@ const http = new XMLHttpRequest()
 // abrindo a conexão (verbo http, destinatário conexão)
 http.open('GET', 'http://localhost:3000/profile')
 
-// enviando conexão 
+// enviando dados 
 http.send()
 
 http.onload = () => {
-    const data = http.response
+    // variavel com valores formatados em json
+    const data = JSON.parse(http.response)
+    console.log(data)
     // percorrendo vetor data
     data.forEach(elemento => {
         // anexando elemento-filho (child) no elemento-pai (parent)

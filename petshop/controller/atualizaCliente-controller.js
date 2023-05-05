@@ -35,8 +35,8 @@ const formulario = document.querySelector('[data-form]');
 formulario.addEventListener('submit', async (evento) => {
     // prevenindo comportanto padrão de enviar sem checar os valores
     evento.preventDefault()
-    // executa função inserindo novos dados
     try {
+        // executa função inserindo novos dados
         await clienteService.atualizaCliente(inputNome.value, inputEmail.value, id)
         // redirecionando
         window.location.href = "../telas/edicao_concluida.html"

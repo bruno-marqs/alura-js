@@ -29,9 +29,17 @@ const tabela = document.querySelector('[data-tabela]')
 // criando eventListener
 tabela.addEventListener('click', (evento) => {
     // selecionando botao excluir pela class que ocorreu evento
-    let botaoDeletar = evento.target.className == 'botao-simples--excluir';
+    let botaoDeletar = evento.target.className == 'botao-simples botao-simples--excluir';
+    
     if(botaoDeletar){
+        // selecionando elemento-pai mais próximo
+        const linhaCliente = evento.target.closest('[data-id]');
+        let id = linhaCliente.dataset.id;
         clienteService.removeCliente(id)
+        .then( () => {
+            // remove a linha do id requisitado
+            linhaCliente.remove();
+        });
     }
 })
 

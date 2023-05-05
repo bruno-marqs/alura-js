@@ -5,16 +5,20 @@ import { clienteService } from "../service/cliente-service.js";
 const formulario = document.querySelector('[data-form]');
 
 // criando eventListener
-formulario.addEventListener('submit', (evento) => {
+formulario.addEventListener('submit', async (evento) => {
     // prevenindo comportanto padrão de enviar sem checar os valores
     evento.preventDefault()
     // atribuindo à variavel valor do data-attribute
     const nome = evento.target.querySelector('[data-nome]').value
     const email = evento.target.querySelector('[data-email]').value
 
-    // executando função inserindo valores do evento
-    clienteService.criaCliente(nome, email)
-    .then(() => {
+    try {
+        // executando função inserindo valores do evento
+        await clienteService.criaCliente(nome, email)
         window.location.href = '../telas/cadastro_concluido.html'
-    })
+    }
+    catch(erro){
+        console.log(erro)
+        window.location.href = "../telas/erro.html"
+    }
 })

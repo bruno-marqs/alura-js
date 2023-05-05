@@ -44,12 +44,12 @@ tabela.addEventListener('click', async (evento) => {
 
 const render = async () => {
     // executando função e manipulando dados
-    const listaClientes = await clienteService.listaClientes().then( data => {
+    const listaClientes = await clienteService.listaClientes()
         // percorrendo vetor data
         listaClientes.forEach(elemento => {
             // anexando elemento-filho (child) no elemento-pai (parent)
             tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))
         })
-    })
-}
+    }
+
 render()

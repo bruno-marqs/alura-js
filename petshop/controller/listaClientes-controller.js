@@ -27,7 +27,7 @@ const criaNovaLinha = (nome, email, id) => {
 const tabela = document.querySelector('[data-tabela]')
 
 // criando eventListener
-tabela.addEventListener('click', (evento) => {
+tabela.addEventListener('click', async (evento) => {
     // selecionando botao excluir pela class que ocorreu evento
     let botaoDeletar = evento.target.className == 'botao-simples botao-simples--excluir';
     
@@ -35,21 +35,21 @@ tabela.addEventListener('click', (evento) => {
         // selecionando elemento-pai mais próximo
         const linhaCliente = evento.target.closest('[data-id]');
         let id = linhaCliente.dataset.id;
-        clienteService.removeCliente(id)
-        .then( () => {
-            // remove a linha do id requisitado
-            linhaCliente.remove();
-        });
+        await clienteService.removeCliente(id)
+        linhaCliente.remove();
     }
 })
 
 // ------------------------------------------------
 
-// executando função e manipulando dados
-clienteService.listaClientes().then( data => {
-    // percorrendo vetor data
-    data.forEach(elemento => {
-        // anexando elemento-filho (child) no elemento-pai (parent)
-        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))
+const render = async () => {
+    // executando função e manipulando dados
+    const listaClientes = await clienteService.listaClientes().then( data => {
+        // percorrendo vetor data
+        listaClientes.forEach(elemento => {
+            // anexando elemento-filho (child) no elemento-pai (parent)
+            tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))
+        })
     })
-})
+}
+render()

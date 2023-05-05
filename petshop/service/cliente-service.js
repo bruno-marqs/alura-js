@@ -39,10 +39,25 @@ const detalhaCliente = (id) => {
     .then( resposta => { return resposta.json() })
 }
 
+const atualizaCliente = (nome, email, id) => {
+    return fetch(`http://localhost:3000/profile/${id}`, {
+        method: 'PUT',
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify({
+            nome: nome,
+            email: email
+        })
+    })
+    .then( resposta => { return resposta.json() })
+}
+
 // criando objeto para notação
 export const clienteService = {
     listaClientes, 
     criaCliente,
     removeCliente,
-    detalhaCliente
+    detalhaCliente,
+    atualizaCliente
 }

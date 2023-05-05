@@ -32,24 +32,36 @@ tabela.addEventListener('click', async (evento) => {
     let botaoDeletar = evento.target.className == 'botao-simples botao-simples--excluir';
     
     if(botaoDeletar){
-        // selecionando elemento-pai mais próximo
-        const linhaCliente = evento.target.closest('[data-id]');
-        let id = linhaCliente.dataset.id;
-        await clienteService.removeCliente(id)
-        linhaCliente.remove();
+        try {
+            // selecionando elemento-pai mais próximo
+            const linhaCliente = evento.target.closest('[data-id]');
+            let id = linhaCliente.dataset.id;
+            await clienteService.removeCliente(id)
+            linhaCliente.remove();
+        }
+        catch(erro){
+            console.log(erro)
+            window.location.href = "../telas/erro.html"
+        }
     }
 })
 
 // ------------------------------------------------
 
 const render = async () => {
-    // executando função e manipulando dados
-    const listaClientes = await clienteService.listaClientes()
+    try {
+        // executando função e manipulando dados
+        const listaClientes = await clienteService.listaClientes()
         // percorrendo vetor data
         listaClientes.forEach(elemento => {
             // anexando elemento-filho (child) no elemento-pai (parent)
             tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))
-        })
+        })        
+    } 
+    catch(erro){
+        console.log(erro)
+        window.location.href = "../telas/erro.html"
     }
+ }
 
 render()

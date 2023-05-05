@@ -12,10 +12,16 @@ import { clienteService } from "../service/cliente-service.js"
     const inputNome = document.querySelector('[data-nome]')
     const inputEmail = document.querySelector('[data-email]')
     
-    // executa função e atribui dados encontrados por id às variáveis
-    const dados = await clienteService.detalhaCliente(id)
-    inputNome.value = dados.nome
-    inputEmail.value = dados.email
+    try{
+        // executa função e atribui dados encontrados por id às variáveis
+        const dados = await clienteService.detalhaCliente(id)
+        inputNome.value = dados.nome
+        inputEmail.value = dados.email
+    }
+    catch(erro){
+        console.log(erro)
+        window.location.href = "../telas/erro.html"
+    }
 })
 //executa função anônima
 ()
@@ -30,7 +36,13 @@ formulario.addEventListener('submit', async (evento) => {
     // prevenindo comportanto padrão de enviar sem checar os valores
     evento.preventDefault()
     // executa função inserindo novos dados
-    await clienteService.atualizaCliente(inputNome.value, inputEmail.value, id)
-    // redirecionando
-    window.location.href = "../telas/edicao_concluida.html"
+    try {
+        await clienteService.atualizaCliente(inputNome.value, inputEmail.value, id)
+        // redirecionando
+        window.location.href = "../telas/edicao_concluida.html"
+    }
+    catch(erro){
+        console.log(erro)
+        window.location.href = "../telas/erro.html"
+    }
 })

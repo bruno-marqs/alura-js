@@ -18,3 +18,19 @@ clienteService.detalhaCliente(id)
     inputNome.value = dados.nome
     inputEmail.value = dados.email
 })
+
+// ----------------------------------------------------------------
+
+// percorrer árvore DOM e selecionando data-attribute
+const formulario = document.querySelector('[data-form]');
+
+// criando eventListener
+formulario.addEventListener('submit', (evento) => {
+    // prevenindo comportanto padrão de enviar sem checar os valores
+    evento.preventDefault()
+    // executa função inserindo novos dados
+    clienteService.atualizaCliente(inputNome.value, inputEmail.value, id)
+    .then(() => {
+        window.location.href = "../telas/edicao_concluida.html"
+    })
+})

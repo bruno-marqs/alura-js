@@ -26,8 +26,17 @@ const criaCliente = (nome, email) => {
     .then( resposta => { return resposta.body })
 }
 
+// função para deletar dados
+const removeCliente = (id) => {
+    // selecionando id na requisição
+    return fetch(`http://localhost:3000/profile/${id}`, {
+        method: 'DELETE'
+    })
+}
+
 // criando objeto para notação
 export const clienteService = {
     listaClientes, 
-    criaCliente
+    criaCliente,
+    removeCliente
 }
